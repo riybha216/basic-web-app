@@ -33,5 +33,17 @@ export default function QueryProcessor(query: string): string {
     return (x*y).toString();
   }
 
+  const squareCubeMatch = query.match(/Which of the following numbers is both a square and a cube: (\d+), (\d+), (\d+), (\d+), (\d+), (\d+), (\d+)/);
+  if (squareCubeMatch) {
+    let array: number[] = [];
+    for (let i = 1; i < 8; i++) {
+      const a: number = parseInt(squareCubeMatch[i]);
+      if ((Math.sqrt(a) * Math.sqrt(a) == a) && (Math.cbrt(a) * Math.cbrt(a) * Math.cbrt(a))) {
+        array.push(a);
+      } 
+    }
+    return array.toString();
+  }
+
   return "";
 }
