@@ -7,6 +7,8 @@ export default function QueryProcessor(query: string): string {
     );
   } else if (query.includes("Andrew ID")) {
     return ("I don't know your Andrew ID.");
+  } else if (query.includes("name")) {
+    return ("riya");
   }
 
   return "";
