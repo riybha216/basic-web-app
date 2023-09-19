@@ -52,5 +52,22 @@ export default function QueryProcessor(query: string): string {
     return array.toString();
   }
 
+  const primeMatch = query.match("/Which of the following numbers are primes: (\d+), (\d+), (\d+), (\d+), (\d+)/");
+  if (primeMatch) {
+    let array: number[] = [];
+    for (let i = 1; i < 6; i++) {
+      const a: number = parseInt(primeMatch[i]);
+      for (let i = 2, s = Math.sqrt(a); i <= s; i++) {
+        if (a % i == 0) {
+          break;
+        }
+      }
+      if (a > 1) {
+        array.push(a);
+      }
+    }
+    return array.toString();
+  }
+
   return "";
 }
